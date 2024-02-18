@@ -18,7 +18,7 @@ func NewUserHandler(s service.UserService) *UserHandler {
 
 func (u *UserHandler) CreateUser(c *fiber.Ctx) error {
 	user := models.User{}
-	c.Body()
+
 	err := json.Unmarshal(c.Body(), &user)
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{"error": "Bad Request"})
