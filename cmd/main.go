@@ -90,6 +90,10 @@ func setupRoutes(uh *handlers.UserHandler) *fiber.App {
 	app.Use(healthcheck.New())
 
 	app.Post("/users", uh.CreateUser)
+	app.Get("/users/:id", uh.GetUser)
+	app.Patch("/users", uh.UpdateUser)
+	app.Delete("/users/:id", uh.DeleteUser)
+	app.Get("/users", uh.ListUsers)
 
 	return app
 }
